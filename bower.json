@@ -1,0 +1,22 @@
+{
+  "name": "Wahlbezirk-Parser",
+  "version": "0.0.1",
+  "authors": [
+    "Patric Vormstein <patric@vormstein.de>"
+  ],
+  "description": "Parser für Wahlbezirke von bundeswahlleiter.de",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.26"
+  }
+}

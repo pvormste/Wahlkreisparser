@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wahlkreis-Parser</title>
+    </head>
+    <body ng-app="WBParser">
+        <h1>Wahlkreis-Parser</h1>   <h4>http://www.bundeswahlleiter.de/de/bundestagswahlen/BTW_BUND_13/ergebnisse/wahlkreisergebnisse/</h4>
+        <div ng-controller="ParseCtrl">
+            <form ng-submit="parse()">
+                <select size="1" ng-model="stateInput">
+                    <option>bw</option>
+                    <option>by</option>
+                    <option>be</option>
+                    <option>bb</option>
+                    <option>hb</option>
+                    <option>hh</option>
+                    <option>he</option>
+                    <option>mv</option>
+                    <option>ni</option>
+                    <option>nw</option>
+                    <option>rp</option>
+                    <option>sl</option>
+                    <option>sn</option>
+                    <option>st</option>
+                    <option>sh</option>
+                    <option>th</option>
+                </select><br>
+                <textarea rows="30" cols="100" ng-model="inputText"></textarea><br>
+                <input type="submit" value="Parsen!">
+            </form>
+            <div>
+                <p ng-repeat="district in districts | orderBy:'number'">
+                    // {{district.name}}, Wahlkreisnummer: {{district.number}}<br>
+                    new District({<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;number: {{district.number}},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;name: "{{district.name}}",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;state: {{district.state}}<br>
+                    }).save();
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+        <script type="text/javascript" src="js/parse.js"></script>
+    </body>
+</html>
+
