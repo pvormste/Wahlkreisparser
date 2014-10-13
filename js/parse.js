@@ -12,7 +12,7 @@ angular.module('WBParser', [])
 			while($scope.inputText.indexOf("href") != -1) {
 
 				// Extract district number
-				var start = $scope.inputText.indexOf("href=")+9;
+				var start = $scope.inputText.indexOf("href=")+8;
 				var length = 3;
 				var num = $scope.inputText.substr(start, length);
 
