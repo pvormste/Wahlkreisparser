@@ -8,6 +8,10 @@
 			.offset {
 				margin-top: 25px;
 			}
+			
+			.inset {
+				padding: 20px;
+			}
 		</style>
     </head>
     <body ng-app="WBParser">
@@ -38,15 +42,31 @@
                 <textarea rows="20" cols="100" ng-model="inputText"></textarea><br>
                 <input type="submit" value="Parsen!" class="btn btn-primary">
             </form>
-            <div class="offset">
-                <p ng-repeat="district in districts | orderBy:'number'">
-                    // {{district.name}}, Wahlkreisnummer: {{district.number}}<br>
-                    new District({<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;number: {{district.number}},<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;name: "{{district.name}}",<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;state: {{district.state}}<br>
-                    }).save();
-                </p>
+            <div>
+				<table>
+					<tr>
+						<th class="inset">Mongoose</th>
+						<th class="inset">mgo</th>
+					</tr>
+					<tr class="inset">
+						<td class="inset">
+							<p ng-repeat="district in districts | orderBy:'number'">
+								// {{district.name}}, Wahlkreisnummer: {{district.number}}<br>
+								new District({<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;number: {{district.number}},<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;name: "{{district.name}}",<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;state: {{district.state}}<br>
+								}).save();
+							</p>
+						</td>
+						<td class="inset" valign="top">
+							<p ng-repeat="district in districts | orderBy:'number'">
+								// {{district.name}}, Wahlkreisnummer: {{district.number}}<br>
+								&models.District{bson.NewObjectId(), {{district.number}}, "{{district.name}}", {{district.state}}}, <br>
+							</p>
+						</td>
+					</tr>
+				</table>
             </div>
         </div>
         <script type="text/javascript" src="lib/angular/angular.min.js"></script>
